@@ -2,9 +2,9 @@ package de.hska.iwi.vslab.Api_Role.Controllers;
 
 import de.hska.iwi.vslab.Api_Role.ConsumingREST.Role;
 import de.hska.iwi.vslab.Api_Role.Services.ApiRoleService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 public class ApiRoleController {
@@ -22,14 +22,14 @@ public class ApiRoleController {
         return apiRoleService.getRole(input);
     }
 
-    @PostMapping("/role")
-    public void addRole(@RequestBody String typ, int level) {
-        apiRoleService.addRole(typ, level);
+    @PostMapping(path="/role", consumes="application/json")
+    public void addRole(@RequestBody(required=true) Role payload) {
+        apiRoleService.addRole(payload.getType(), payload.getLevel());
     }
 
-    @PutMapping("/role")
-    public void updateRole(@RequestBody int id, String typ, int level) {
-        apiRoleService.updateRole(id, typ, level);
+    @PutMapping(path="/role/{id}", consumes="application/json")
+    public void updateRole(@PathVariable int id, @RequestBody(required=true) Role payload) {
+        apiRoleService.updateRole(payload.getId(), payload.getType(), payload.getLevel());
     }
 
     @DeleteMapping("/role/{id}")
