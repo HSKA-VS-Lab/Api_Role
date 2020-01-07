@@ -49,9 +49,9 @@ public class ConsumeCoreRole {
     public void updateRole(Role role) {
         try {
             UrlBuilder urlBuilder = new UrlBuilder();
-            log.info("URL:" + urlBuilder.getBaseUrl());
-            HttpEntity<Role> request = new HttpEntity<>(new Role(role.getType(), role.getLevel()));
-            restTemplate.put(urlBuilder.getBaseUrl(), request);
+            log.info("URL:" + urlBuilder.getUrlWithId(role.getId()));
+            // HttpEntity<Role> request = new HttpEntity<>(new Role(role.getId(), role.getType(), role.getLevel()));
+            restTemplate.put(urlBuilder.getUrlWithId(role.getId()), role);
         } catch (Exception e) {
             System.out.println(e);
             throw e;
@@ -61,8 +61,8 @@ public class ConsumeCoreRole {
     public void deleteRole(int id){
         try {
             UrlBuilder urlBuilder = new UrlBuilder();
-            log.info("URL:" + urlBuilder.getBaseUrl());
-            restTemplate.delete(urlBuilder.getUrlWithId(id));
+            log.info("delete URL to core_role:" + urlBuilder.getUrlWithId(id), id);
+            restTemplate.delete(urlBuilder.getUrlWithId(id), id);
         } catch (Exception e) {
             System.out.println(e);
             throw e;

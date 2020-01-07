@@ -29,11 +29,11 @@ public class ApiRoleController {
 
     @PutMapping(path="/role/{id}", consumes="application/json")
     public void updateRole(@PathVariable int id, @RequestBody(required=true) Role payload) {
-        apiRoleService.updateRole(payload.getId(), payload.getType(), payload.getLevel());
+        apiRoleService.updateRole(payload);
     }
 
     @DeleteMapping("/role/{id}")
-    public void deleteRole(@PathVariable int id){
+    public void deleteRole(@PathVariable Integer id){
         apiRoleService.deleteRole(id);
     }
 

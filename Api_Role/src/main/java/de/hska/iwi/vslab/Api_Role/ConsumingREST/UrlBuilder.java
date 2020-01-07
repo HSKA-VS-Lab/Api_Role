@@ -16,19 +16,19 @@ public class UrlBuilder {
 
 
     String getBaseUrl(){
-        return baseUrl + "/role";
+        return this.baseUrl + "/role";
     }
 
     String getSlashURL(){
-        return baseUrl+"/";
+        return this.baseUrl+"/";
     }
 
     String getUrlWithId(int id){
-        return baseUrl+"/"+id;
+        return this.getBaseUrl() + "/" + id;
     }
 
     String getInputUrl(String input){
-        return getBaseUrl() + "/" + input;
+        return this.getBaseUrl() + "/" + input;
     }
 
 }

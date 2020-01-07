@@ -1,9 +1,9 @@
 package de.hska.iwi.vslab.Api_Role.Services;
 
-import org.springframework.stereotype.Service;
-
 import de.hska.iwi.vslab.Api_Role.ConsumingREST.ConsumeCoreRole;
 import de.hska.iwi.vslab.Api_Role.ConsumingREST.Role;
+import org.springframework.stereotype.Service;
+
 
 /**
  * The implementation of the service.
@@ -25,10 +25,10 @@ public class ApiRoleService {
         coreRole.addRole(new Role(typ, level));
     }
 
-    public void updateRole(int id, String typ, int level) {
-        Role role = coreRole.getRole(Integer.toString(id));
-        role.setLevel(level);
-        role.setType(typ);
+    public void updateRole(Role roleO) {
+        Role role = coreRole.getRole(Integer.toString(roleO.getId()));
+        role.setLevel(roleO.getLevel());
+        role.setType(roleO.getType());
         coreRole.updateRole(role);
     }
 

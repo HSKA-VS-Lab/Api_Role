@@ -14,12 +14,18 @@ public class Role {
         this.level = level;
     }
 
+    public Role(int id, String type, int level) {
+        this.id = id;
+        this.type = type;
+        this.level = level;
+    }
+
     @Override
     public String toString() {
         return String.format("Role[id=%d, type='%s', level=%d]", id, type, level);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -27,7 +33,7 @@ public class Role {
         return type;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
