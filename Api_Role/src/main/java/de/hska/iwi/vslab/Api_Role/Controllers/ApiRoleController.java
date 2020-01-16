@@ -31,7 +31,7 @@ public class ApiRoleController {
     }
 
     @GetMapping("/role/{input}")
-    @HystrixCommand(fallbackMethod = "fallbackGetRole")
+    //@HystrixCommand(fallbackMethod = "fallbackGetRole")
     public Role getRole(@PathVariable String input) {
         return apiRoleService.getRole(input);
     }
@@ -42,25 +42,25 @@ public class ApiRoleController {
     }
 
     @PostMapping(path="/role", consumes="application/json")
-    @HystrixCommand(fallbackMethod = "defaultFallback")
+    //@HystrixCommand(fallbackMethod = "defaultFallback")
     public void addRole(@RequestBody(required=true) Role payload) {
         apiRoleService.addRole(payload.getType(), payload.getLevel());
     }
 
     @PutMapping(path="/role/{id}", consumes="application/json")
-    @HystrixCommand(fallbackMethod = "defaultFallbackWithId")
+    //@HystrixCommand(fallbackMethod = "defaultFallbackWithId")
     public void updateRole(@PathVariable int id, @RequestBody(required=true) Role payload) {
         apiRoleService.updateRole(payload);
     }
 
     @DeleteMapping("/role/{id}")
-    @HystrixCommand(fallbackMethod = "defaultFallbackWithId")
+    //@HystrixCommand(fallbackMethod = "defaultFallbackWithId")
     public void deleteRole(@PathVariable Integer id){
         apiRoleService.deleteRole(id);
     }
 
     @DeleteMapping("/role")
-    @HystrixCommand(fallbackMethod = "defaultFallback")
+    //@HystrixCommand(fallbackMethod = "defaultFallback")
     public void deleteAllRoles(){
         apiRoleService.deleteAllRoles();
     }
