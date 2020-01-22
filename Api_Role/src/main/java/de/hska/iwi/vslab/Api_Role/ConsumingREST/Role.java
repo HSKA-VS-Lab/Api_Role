@@ -6,7 +6,7 @@ public class Role {
     private String type;
     private int level;
 
-    protected Role() {
+    public Role() {
     }
 
     public Role(String type, int level) {
