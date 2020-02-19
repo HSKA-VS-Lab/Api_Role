@@ -11,7 +11,11 @@ public class UrlBuilder {
     public UrlBuilder(){
         LoadBalancerClient loadBalancer = BeanUtil.getBean(LoadBalancerClient.class);
         ServiceInstance si = loadBalancer.choose("core_role");
-        this.baseUrl =  si.getUri().toString();
+        try{
+            this.baseUrl =  si.getUri().toString();
+        }catch(NullPointerException np_ex){
+            this.baseUrl = "http://corerole:8084";// Schreibweise siehe Docker-Compose
+        }
     }
 
 
